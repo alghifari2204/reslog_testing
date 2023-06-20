@@ -4,13 +4,12 @@ Feature('Favoriting Restaurants');
 
 Before(({I}) => {
   // Navigate to favorite resto page
-  I.amOnPage('/#/favorite');
+  I.amOnPage('/#/favorites');
 });
 
 Scenario('Showing empty favorited resto', ({I}) => {
   // Favorite resto page should show empty resto
-  I.seeElement('favorite-page');
-  I.see('Daftar restaurant kosong', '.message__content');
+  I.see('No Favorite Restaurant', '#title');
 });
 
 Scenario('Favoriting one Restaurant', async ({I}) => {
@@ -39,7 +38,7 @@ Scenario('Favoriting one Restaurant', async ({I}) => {
   I.see('Restaurant berhasil ditambahkan ke favorite', '#snackbar');
 
   // Navigate to favorite resto list
-  I.amOnPage('/#/favorite');
+  I.amOnPage('/#/favorites');
   I.seeElement('.resto__item');
 
   const favoritedRestoName = await I.grabTextFrom('.resto__name');
